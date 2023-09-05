@@ -10,7 +10,6 @@ type Van = {
     type?: string,
 }
 
-
 export default function VanDetail() {
     const params = useParams()
     const [van, setVan] = useState<Van>({})
