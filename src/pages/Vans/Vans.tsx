@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link, useLoaderData, useSearchParams } from 'react-router-dom'
 // @ts-ignore
 import { getVans } from '../../api'
