@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLoaderData, useSearchParams } from 'react-router-dom'
+// @ts-ignore
+import { getVans } from '../../api'
 
 type Van = {
     id: string,
@@ -10,17 +12,22 @@ type Van = {
     type: string,
 }
 
+type Error = {
+    message: string,
+    statusText: string,
+    status: number
+}
+
+export function loader() {
+    return getVans()
+}
+
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
+    const [error, setError] = useState<Error | null>(null)
+    const vans = useLoaderData() as Van[]
 
     const typeFilter = searchParams.get('type')
-
-    const [vans, setVans] = useState([])
-    useEffect(() => {
-        fetch("/api/vans")
-            .then(res => res.json())
-            .then(data => setVans(data.vans))
-    }, [])
 
     const displayedVans = typeFilter
         ? vans.filter((van: Van) => van.type === typeFilter)
@@ -44,6 +51,11 @@ export default function Vans() {
             </Link>
         </div>
     ))
+
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
+    }
 
     return (
         <div className="van-list-container">
