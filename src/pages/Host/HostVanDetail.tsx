@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { useParams, Link, Outlet, NavLink } from "react-router-dom"
+import { ContextType, useEffect, useState } from "react"
+import { useParams, Link, Outlet, NavLink, useOutletContext } from "react-router-dom"
 
 type Van = {
     id?: string,
@@ -75,9 +75,12 @@ export default function HostVanDetail() {
                     </NavLink>
                 </nav>
 
-                <Outlet />
+                <Outlet context={{ currentVan } satisfies { currentVan: Van }} />
             </div>
         </section>
     )
 }
 
+export function useVan() {
+    return useOutletContext<{ currentVan: Van }>();
+}

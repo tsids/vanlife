@@ -1,5 +1,9 @@
+import { useVan } from './HostVanDetail'
+
 export default function HostVanPricing() {
+    const { currentVan } = useVan()
+
     return (
-        <h2>host van pricing</h2>
+        <h3 className="host-van-price">${currentVan.price}<span>/day</span></h3>
     )
 }
