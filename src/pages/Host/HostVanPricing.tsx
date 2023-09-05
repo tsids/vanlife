@@ -1,7 +1,7 @@
-import { useVan } from './HostVanDetail'
+import { useVanContext } from './HostVanDetail'
 
 export default function HostVanPricing() {
-    const { currentVan } = useVan()
+    const { currentVan } = useVanContext()
 
     return (
         <h3 className="host-van-price">${currentVan.price}<span>/day</span></h3>

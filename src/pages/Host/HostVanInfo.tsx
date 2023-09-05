@@ -1,7 +1,7 @@
-import { useVan } from './HostVanDetail'
+import { useVanContext } from './HostVanDetail'
 
 export default function HostVanInfo() {
-    const { currentVan } = useVan()
+    const { currentVan } = useVanContext()
 
     return (
         <section className="host-van-detail-info">
