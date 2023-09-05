@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom"
 
 export default function HostLayout() {
-    const style: React.CSSProperties = {
+    const activeStyle: React.CSSProperties = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
@@ -13,25 +13,25 @@ export default function HostLayout() {
                 <NavLink
                     to="."
                     end
-                    style={({ isActive }: { isActive: boolean }) => isActive ? style : undefined}
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
                 >
                     Dashboard
                 </NavLink>
                 <NavLink
                     to="income"
-                    style={({ isActive }: { isActive: boolean }) => isActive ? style : undefined}
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
                 >
                     Income
                 </NavLink>
                 <NavLink
                     to="vans"
-                    style={({ isActive }: { isActive: boolean }) => isActive ? style : undefined}
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
                 >
                     Vans
                 </NavLink>
                 <NavLink
                     to="reviews"
-                    style={({ isActive }: { isActive: boolean }) => isActive ? style : undefined}
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
                 >
                     Reviews
                 </NavLink>

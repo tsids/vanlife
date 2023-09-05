@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, Outlet, NavLink } from "react-router-dom"
 
 type Van = {
     id?: string,
@@ -8,6 +8,12 @@ type Van = {
     description?: string,
     imageUrl?: string,
     type?: string,
+}
+
+const activeStyle: React.CSSProperties = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616"
 }
 
 export default function HostVanDetail() {
@@ -47,6 +53,30 @@ export default function HostVanDetail() {
                     </div>
                 </div>
             </div>
+
+            <nav className="host-van-detail-nav">
+                <NavLink
+                    to="."
+                    end
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
+                >
+                    Details
+                </NavLink>
+                <NavLink
+                    to="pricing"
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
+                >
+                    Pricing
+                </NavLink>
+                <NavLink
+                    to="photos"
+                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
+                >
+                    Photos
+                </NavLink>
+            </nav>
+
+            <Outlet />
         </section>
     )
 }
