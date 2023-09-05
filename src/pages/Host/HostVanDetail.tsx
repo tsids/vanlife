@@ -52,31 +52,31 @@ export default function HostVanDetail() {
                         <h4>${currentVan.price}/day</h4>
                     </div>
                 </div>
+
+                <nav className="host-van-detail-nav">
+                    <NavLink
+                        to="."
+                        end
+                        style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
+                    >
+                        Details
+                    </NavLink>
+                    <NavLink
+                        to="pricing"
+                        style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
+                    >
+                        Pricing
+                    </NavLink>
+                    <NavLink
+                        to="photos"
+                        style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
+                    >
+                        Photos
+                    </NavLink>
+                </nav>
+
+                <Outlet />
             </div>
-
-            <nav className="host-van-detail-nav">
-                <NavLink
-                    to="."
-                    end
-                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
-                >
-                    Details
-                </NavLink>
-                <NavLink
-                    to="pricing"
-                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
-                >
-                    Pricing
-                </NavLink>
-                <NavLink
-                    to="photos"
-                    style={({ isActive }: { isActive: boolean }) => isActive ? activeStyle : undefined}
-                >
-                    Photos
-                </NavLink>
-            </nav>
-
-            <Outlet />
         </section>
     )
 }

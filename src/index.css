@@ -407,7 +407,6 @@ i[class*='van-type-'] {
 .host-van-detail-nav {
     display: flex;
     margin-block: 25px;
-    margin-left: 50px;
 }
 
 .host-van-detail-nav a {
