@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom"
-// @ts-ignore
-import { getHostVans } from '../../api'
+import { getHostVans } from '../../api.ts'
+import { requireAuth } from '../../utils'
 
 type Van = {
     id?: string,
@@ -11,7 +11,8 @@ type Van = {
     type?: string,
 }
 
-export function loader() {
+export async function loader() {
+    await requireAuth()
     return getHostVans()
 }
 

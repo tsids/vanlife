@@ -1,6 +1,6 @@
 import { Link, Outlet, NavLink, useOutletContext, useLoaderData } from "react-router-dom"
-// @ts-ignore
-import { getHostVans } from '../../api'
+import { getHostVans } from '../../api.ts'
+import { requireAuth } from '../../utils'
 
 type Van = {
     id?: string,
@@ -17,7 +17,8 @@ const activeStyle: React.CSSProperties = {
     color: "#161616"
 }
 
-export function loader({ params }: { params: any }) {
+export async function loader({ params }: { params: any }) {
+    await requireAuth()
     return getHostVans(params.id)
 }
 
