@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
-import { useParams, Link, Outlet, NavLink, useOutletContext } from "react-router-dom"
+import { Link, Outlet, NavLink, useOutletContext, useLoaderData } from "react-router-dom"
+// @ts-ignore
+import { getHostVans } from '../../api'
 
 type Van = {
     id?: string,
@@ -16,20 +17,12 @@ const activeStyle: React.CSSProperties = {
     color: "#161616"
 }
 
+export function loader({ params }: { params: any }) {
+    return getHostVans(params.id)
+}
+
 export default function HostVanDetail() {
-    const { id } = useParams()
-    const [currentVan, setCurrentVan] = useState<Van>({})
-
-    useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => setCurrentVan(data.vans))
-    }, [id])
-
-
-    if (!currentVan) {
-        return <h1>Loading...</h1>
-    }
+    const currentVan = useLoaderData() as Van
 
     return (
         <section>
