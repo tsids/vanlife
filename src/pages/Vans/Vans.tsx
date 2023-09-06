@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { Link, useLoaderData, useSearchParams } from 'react-router-dom'
-// @ts-ignore
-import { getVans } from '../../api'
+import { getVans } from '../../api.ts'
 
 type Van = {
     id: string,
